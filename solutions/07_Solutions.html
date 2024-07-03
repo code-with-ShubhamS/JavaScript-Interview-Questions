@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Add Note</button>
+    <div class="note"></div>
+    <script>
+
+//localStorage only store the string
+//convert string into object JSON.parse(String)
+//convert object into string JSON.stringyfy(object);
+
+        function saveNoteToLocalStorage(note) {
+            localStorage.setItem("notes", note);
+        }
+        let note = localStorage.getItem("notes")
+        if(note){ //when refresing website we are checking is note is already there or not 
+            document.querySelector(".note").innerHTML = note
+        }
+        
+        document.querySelector("button").addEventListener("click", () => {
+            let note = prompt("Enter your note")
+            saveNoteToLocalStorage(note)
+            document.querySelector(".note").innerHTML = note   
+        })
+
+    </script>
+</body>
+</html>
